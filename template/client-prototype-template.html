@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pryme App - Revisión de avances y versiones del proyecto">
+    <meta name="keywords" content="Pryme, proyecto, avances, versiones, prototipo">
+    <meta name="author" content="GoSoft">
+    <meta name="robots" content="index, follow">
+    <meta name="figma-embed-url" content="https://www.figma.com/proto/Wrim8tHzCuPwlB8228ar20/Pryme-App?node-id=3250-12203&viewing=fixed&page-id=42%3A2005&starting-point-node-id=3250%3A12203">
+    <title>Pryme App | GoSoft Studio</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* Estilos específicos para la página del cliente */
+        .client-hero {
+            --page-pad: clamp(1rem, 1.8vw, 2rem);
+            --bottom-align-offset: 0px;
+            --left-group-shift: clamp(-12px, -0.8vw, -6px);
+            --left-logo-shift: clamp(-16px, -1vw, -10px);
+            --left-logo-top-shift: clamp(-62px, -3.2vw, -34px);
+            --center-block-shift: clamp(-32px, -1.8vw, -18px);
+            background: linear-gradient(135deg, #0B1F35, #0D2847, #1A3A52);
+            color: white;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--page-pad);
+            min-height: 100vh;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .client-container {
+            width: min(100%, 1760px);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(480px, 1fr) minmax(520px, 1fr);
+            gap: clamp(1rem, 2vw, 2rem);
+            align-items: stretch;
+            height: 100%;
+        }
+
+        .client-info {
+            text-align: left;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 100%;
+            min-width: 0;
+            padding: clamp(1rem, 1.8vw, 2rem) clamp(1rem, 1.8vw, 2rem) var(--bottom-align-offset) clamp(1rem, 1.8vw, 2rem);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .client-content-group {
+            width: min(100%, 700px);
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-left: var(--left-group-shift);
+        }
+
+        .client-main-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            transform: translateY(var(--center-block-shift));
+        }
+
+        .client-brand {
+            display: block;
+            margin-bottom: clamp(0.9rem, 1.2vw, 1.5rem);
+            margin-top: var(--left-logo-top-shift);
+            width: 100%;
+        }
+
+        .client-brand .main-banner {
+            max-height: 130px;
+            width: auto;
+            display: block;
+        }
+
+        .client-brand .logo-link {
+            display: inline-flex;
+            margin-left: var(--left-logo-shift);
+        }
+
+        .client-info h1 {
+            font-size: clamp(2.4rem, 3.4vw, 3.35rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .project-details {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: clamp(1rem, 1.3vw, 1.25rem) clamp(1.1rem, 1.5vw, 1.4rem);
+            margin-bottom: 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .detail-item {
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .detail-item.status-inline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .detail-item.status-inline .detail-label {
+            margin-bottom: 0;
+        }
+
+        .detail-item.status-inline .detail-value {
+            line-height: 1.25;
+            text-align: right;
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            opacity: 0.85;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: clamp(1.02rem, 1.1vw, 1.08rem);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .detail-value.plain-value {
+            font-weight: 400;
+        }
+
+        .detail-list {
+            margin: 0;
+            padding-left: 1.1rem;
+            line-height: 1.5;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .detail-list li {
+            margin-bottom: 0.2rem;
+        }
+
+        .detail-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(76, 175, 80, 0.25);
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(76, 175, 80, 0.5);
+        }
+
+        .version-info {
+            font-size: 0.94rem;
+            opacity: 0.95;
+            line-height: 1.45;
+        }
+
+        .client-footer {
+            margin-top: 0;
+            text-align: left;
+            font-size: 0.86rem;
+            opacity: 0.92;
+        }
+
+        .client-footer a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        /* Embed de prototipo */
+        .phone-mockup {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+            perspective: none;
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            min-height: 0;
+            padding: 0 0 var(--bottom-align-offset) 0;
+            background: transparent;
+        }
+
+        .iphone-frame {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+            border: none;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .iphone-frame::before {
+            display: none;
+        }
+
+        .iphone-frame::after {
+            display: none;
+        }
+
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border-radius: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .iphone-screen iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            transform: none;
+            transform-origin: center center;
+            background: transparent;
+            border-radius: clamp(18px, 1.5vw, 24px);
+        }
+
+        .expand-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            padding: 0;
+        }
+
+        .expand-btn:hover {
+            opacity: 0.78;
+        }
+
+        .expand-btn:active {
+            transform: scale(0.95);
+        }
+
+        .expand-icon {
+            width: 18px;
+            height: 18px;
+            stroke: rgba(255, 255, 255, 0.9);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Fullscreen Modal */
+        .fullscreen-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0B1F35, #0D2847, #1A3A52);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .fullscreen-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .close-btn {
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            padding: 0;
+        }
+
+        .close-btn:hover {
+            opacity: 0.78;
+        }
+
+        .close-btn:active {
+            transform: scale(0.95);
+        }
+
+        .close-icon {
+            width: 22px;
+            height: 22px;
+            stroke: rgba(255, 255, 255, 0.95);
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+        }
+
+        .fullscreen-container {
+            width: 95%;
+            height: 95%;
+            background: transparent;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fullscreen-container .close-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            z-index: 2;
+        }
+
+        .fullscreen-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (min-width: 1900px) {
+            .client-container {
+                width: min(100%, 1920px);
+                gap: clamp(1.2rem, 1.6vw, 2.1rem);
+            }
+
+            .client-content-group {
+                width: min(100%, 760px);
+            }
+        }
+
+        @media (max-width: 1440px) {
+            .client-container {
+                grid-template-columns: minmax(430px, 1fr) minmax(500px, 1fr);
+                gap: clamp(0.9rem, 1.4vw, 1.4rem);
+            }
+        }
+
+        @media (max-width: 1180px) {
+            .client-hero {
+                --page-pad: clamp(0.9rem, 1.2vw, 1.25rem);
+                --left-logo-top-shift: clamp(-44px, -2.6vw, -24px);
+                --center-block-shift: clamp(-22px, -1.5vw, -10px);
+            }
+
+            .client-container {
+                grid-template-columns: minmax(390px, 1fr) minmax(420px, 1fr);
+                gap: clamp(0.75rem, 1.1vw, 1rem);
+            }
+
+            .client-content-group {
+                width: min(100%, 640px);
+            }
+        }
+
+        @media (max-width: 980px) {
+            .client-hero {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .client-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                height: auto;
+            }
+
+            .client-info,
+            .client-content-group {
+                min-height: auto;
+            }
+
+            .client-content-group {
+                width: 100%;
+                margin-left: 0;
+                justify-content: flex-start;
+                gap: 1rem;
+            }
+
+            .client-main-block {
+                justify-content: flex-start;
+                transform: none;
+            }
+
+            .client-brand {
+                margin-top: 0;
+            }
+
+            .client-brand .logo-link {
+                margin-left: 0;
+            }
+
+            .phone-mockup {
+                padding: 0;
+                min-height: 62vh;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .client-hero {
+                padding: 1rem;
+                min-height: auto;
+            }
+
+            .client-info {
+                padding: 0;
+            }
+
+            .client-brand {
+                margin-bottom: 1rem;
+            }
+
+            .client-brand .main-banner {
+                max-height: 78px;
+            }
+
+            .client-info h1 {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+
+            .project-details {
+                padding: 1.1rem;
+            }
+
+            .phone-mockup {
+                min-height: 56vh;
+            }
+
+            .expand-btn {
+                width: 34px;
+                height: 34px;
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="client-hero">
+            <div class="client-container">
+                <!-- Lado Izquierdo: Información del Proyecto -->
+                <div class="client-info">
+                    <div class="client-content-group">
+                        <div class="client-brand">
+                            <a href="https://gosoftsolutions.com" target="_blank" rel="noopener noreferrer" class="logo-link">
+                                <img src="../../images/GoSoft sf.png" alt="GoSoft Solutions Banner" class="main-banner">
+                            </a>
+                        </div>
+                        <div class="client-main-block">
+                            <h1>Pryme App</h1>
+                            
+                            <div class="project-details">
+                                <div class="detail-item status-inline">
+                                    <div class="detail-label">Estado del proyecto</div>
+                                    <div class="detail-value">
+                                        <span class="status-badge">En Desarrollo</span>
+                                    </div>
+                                </div>
+
+                                <div class="detail-item status-inline">
+                                    <div class="detail-label">Última actualización</div>
+                                    <div class="detail-value plain-value">24 de abril, 2026</div>
+                                </div>
+
+                                <div class="detail-item status-inline">
+                                    <div class="detail-label">Versión actual</div>
+                                    <div class="detail-value plain-value">v1.0 - Prototipo interactivo</div>
+                                </div>
+
+                                <div class="detail-item">
+                                    <div class="detail-label">Cambios clave</div>
+                                    <ul class="detail-list">
+                                        <li>Flujo de acceso y onboarding del usuario</li>
+                                        <li>Sección Home / Workout</li>
+                                        <li>Sección Pryme AI Chat</li>
+                                        <li>Sección Journal (Bitácora de workouts)</li>
+                                        <li>Sección Perfil y preferencias de la app</li>
+                                        <li>Barra de navegación principal</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="client-footer">&copy; 2026 GoSoft S.A. de C.V. All Rights Reserved. <a href="https://gosoftsolutions.com/politica-de-confidencialidad" target="_blank" rel="noopener noreferrer">Privacy Policy</a></p>
+                    </div>
+                </div>
+
+                <!-- Lado Derecho: Mockup iPhone con Figma -->
+                <div class="phone-mockup">
+                    <div class="iphone-frame">
+                        <div class="iphone-screen">
+                            <iframe id="prototypeIframe" src="about:blank" allowfullscreen></iframe>
+                            <button class="expand-btn" onclick="openFullscreen()" title="Abrir en pantalla completa">
+                                <svg class="expand-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fullscreen Modal -->
+        <div id="fullscreenModal" class="fullscreen-modal">
+            <div class="fullscreen-container">
+                <button class="close-btn" onclick="closeFullscreen()" title="Cerrar pantalla completa">
+                    <svg class="close-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                </button>
+                <iframe id="fullscreenIframe" src="about:blank" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../../js/script.js"></script>
+    <script>
+        function applyFigmaUrl() {
+            const figmaMeta = document.querySelector('meta[name="figma-embed-url"]');
+            if (!figmaMeta || !figmaMeta.content) {
+                return;
+            }
+
+            const figmaUrl = figmaMeta.content.trim();
+            const prototypeIframe = document.getElementById('prototypeIframe');
+            const fullscreenIframe = document.getElementById('fullscreenIframe');
+
+            if (prototypeIframe) {
+                prototypeIframe.src = figmaUrl;
+            }
+
+            if (fullscreenIframe) {
+                fullscreenIframe.src = figmaUrl;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', applyFigmaUrl);
+
+        function openFullscreen() {
+            const modal = document.getElementById('fullscreenModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            const modal = document.getElementById('fullscreenModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeFullscreen();
+            }
+        });
+    </script>
+</html>
