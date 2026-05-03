@@ -454,19 +454,39 @@
 
             .client-info {
                 padding: 0;
+                display: contents;
+            }
+
+            .client-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .client-content-group {
+                min-height: auto;
+                justify-content: flex-start;
+                order: 1;
             }
 
             .client-brand {
-                margin-bottom: 1rem;
+                margin-bottom: 0.5rem;
+                text-align: center;
             }
 
             .client-brand .main-banner {
                 max-height: 78px;
             }
 
+            .client-brand .logo-link {
+                margin-left: 0;
+                justify-content: center;
+                width: 100%;
+            }
+
             .client-info h1 {
                 font-size: 2.2rem;
-                margin-bottom: 1rem;
+                margin-bottom: 0.75rem;
                 text-align: center;
             }
 
@@ -474,8 +494,15 @@
                 padding: 1.1rem;
             }
 
+            .client-footer {
+                margin-top: 0;
+                text-align: center;
+                order: 3;
+            }
+
             .phone-mockup {
-                min-height: 56vh;
+                min-height: 72vh;
+                order: 2;
             }
 
             .expand-btn {
